@@ -1,13 +1,13 @@
 export default function Button({
-    type= 'button',
-    texto ,
+    tipo='button',
+    texto,
     cor='primaria',
     disable = false,
     onclick
 }){
     return(
         <button
-        type={type}
+        type={tipo}
         className={`btn ${cor}`}
         disabled={disable}
          onClick={onclick}>
