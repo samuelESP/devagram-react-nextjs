@@ -6,7 +6,7 @@
 }
 
 html, body, #__next {
-  height: 100%;
+  height: 100vh;
   margin: 0;
 }
 
@@ -36,7 +36,24 @@ input{
   }
 }
 
+.desktop {
+  display: block;
+
+  @media screen and (max-width: calc($desktopBreakPoint - 1px)) {
+    display: none;
+  }
+}
+
+.mobile {
+  display: block;
+
+  @media screen and (min-width: $desktopBreakPoint) {
+    display: none;
+  }
+}
+
 @import '../public/fonts/fonts.scss';
 @import '../components/button/button.scss';
 @import "./paginaPublica.scss";
 @import '../components/inputPublico/inputPublico.scss';
+@import "../pages/cadastro/casdastro.scss"
