@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import {validarEmail, validarSenha} from "@/utils/validadores";
+import { validarEmail, validarSenha } from "@/utils/validadores";
 import UsuarioService from "@/services/UsuarioService";
 
 // Componentes
@@ -19,7 +19,7 @@ import imagemLogo from "@/public/images/logo.svg";
 const usuarioService = new UsuarioService();
 
 
-export default function Login() {
+export default function Login({ aposAutenticacao }) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -30,28 +30,32 @@ export default function Login() {
         return (
             validarEmail(email)
             && validarSenha(senha)
-        );}
+        );
+    }
 
-        const aoSubmeter = async (e) => {
-            e.preventDefault();
-            if (!validarFormulario()) {
-                return;
+    const aoSubmeter = async (e) => {
+        e.preventDefault();
+        if (!validarFormulario()) {
+            return;
+        }
+
+        setEstaSubmetendo(true);
+
+        try {
+            await usuarioService.login({
+                login: email,
+                senha
+            });
+
+            if (aposAutenticacao) {
+                aposAutenticacao();
             }
-    
-            setEstaSubmetendo(true);
-    
-            try {
-                await usuarioService.login({
-                    login: email,
-                    senha
-                });
-    
-            } catch (error) {
-                alert("Erro ao realizar o login. " + error?.response?.data?.erro);
-            }
-    
-            setEstaSubmetendo(false);
-        } 
+        } catch (error) {
+            alert("Erro ao realizar o login. " + error?.response?.data?.erro);
+        }
+
+        setEstaSubmetendo(false);
+    }
 
     return (
         <section className={`paginaLogin paginaPublica`}>
