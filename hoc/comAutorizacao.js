@@ -1,5 +1,7 @@
-import UsuarioService from "@/services/UsuarioService"
-import { useRouter } from "next/router"
+import Cabecalho from "@/components/layout/Cabecalho";
+import Rodape from "@/components/layout/Rodape";
+import UsuarioService from "@/services/UsuarioService";
+import { useRouter } from "next/router";
 
 const usuarioService = new UsuarioService()
 
@@ -11,7 +13,14 @@ export default function ComAutorizacao(Componente) {
                 router.replace('/');
                 return null
             }
-            return <Componente {...props} />
+
+            return (
+                <>
+                    <Cabecalho />
+                    <Componente {...props} />
+                    <Rodape />
+                </>
+            )
         }
         return null;
     }

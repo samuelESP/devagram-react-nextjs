@@ -61,8 +61,24 @@ input{
   margin-bottom: 15px;
 }
 
+
+.barraNavegacao{
+  ul{
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 10px 0px;
+    li{
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+}
+
 @import '../public/fonts/fonts.scss';
 @import '../components/button/button.scss';
 @import "./paginaPublica.scss";
 @import '../components/inputPublico/inputPublico.scss';
-@import "../pages/cadastro/casdastro.scss"
+@import "../pages/cadastro/casdastro.scss";
+@import "../components/layout/cabecalho.scss";
+@import "../components/layout/rodape.scss";
