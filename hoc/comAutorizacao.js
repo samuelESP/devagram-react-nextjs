@@ -7,13 +7,16 @@ const usuarioService = new UsuarioService()
 
 export default function ComAutorizacao(Componente) {
     return (props) => {
-        const router = useRouter()
-        if (typeof window !== undefined) {
+        
+        const router = new useRouter();
+
+        if (typeof window !== 'undefined' && window.localStorage) {
             if (!usuarioService.estaAutenticado()) {
                 router.replace('/');
-                return null
+                return null;
             }
 
+        }
             return (
                 <>
                     <Cabecalho />
@@ -21,7 +24,6 @@ export default function ComAutorizacao(Componente) {
                     <Rodape />
                 </>
             )
-        }
         return null;
     }
 }
