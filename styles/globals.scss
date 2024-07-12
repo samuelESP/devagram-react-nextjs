@@ -75,6 +75,24 @@ input{
   }
 }
 
+strong {
+  font-family: $fontBold;
+}
+
+body {
+  @media screen and (min-width: $desktopBreakPoint) {
+    background-color: $cinza5;
+    background-image: url('../public/images/imagemDeFundoDesktop.svg');
+  }
+}
+
+.largura30pctDesktop {
+  @media screen and (min-width: $desktopBreakPoint) {
+    width: 30%;
+    margin: auto;
+  }
+}
+
 @import '../public/fonts/fonts.scss';
 @import '../components/button/button.scss';
 @import "./paginaPublica.scss";
@@ -82,3 +100,4 @@ input{
 @import "../pages/cadastro/casdastro.scss";
 @import "../components/layout/cabecalho.scss";
 @import "../components/layout/rodape.scss";
+@import "../components/feed/feed.scss";
