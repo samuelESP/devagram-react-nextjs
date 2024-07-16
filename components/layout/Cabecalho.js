@@ -22,6 +22,12 @@ export default function Cabecalho() {
     const [termoPesquisado, setTermoPesquisado] = useState('');
     const router = new useRouter();
 
+    let cabecalhoClassName = '';
+    if (window && window.location.pathname !== '/') {
+        cabecalhoClassName = 'desktop';
+    } 
+    
+
 
     const aoPesquisar = async (e) => {
         setTermoPesquisado(e.target.value);
@@ -50,7 +56,7 @@ export default function Cabecalho() {
     }
 
     return (
-        <header className="cabecalhoPrincipal">
+        <header className={`cabecalhoPrincipal ${cabecalhoClassName}`}>
             <div className="conteudoCabecalhoPrincipal">
                 <div className='logoCabecalhoPrincipal'>
                     <Image
